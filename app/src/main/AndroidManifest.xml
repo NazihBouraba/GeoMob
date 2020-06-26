@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WikipediaActivity"></activity>
+        <activity android:name=".TwitterActivity"></activity>
+        <activity android:name=".WikipediaActivity" />
         <activity android:name=".VideoActivity" />
         <activity android:name=".PaysDetailActivity" />
         <activity android:name=".MainActivity">

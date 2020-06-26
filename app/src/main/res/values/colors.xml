@@ -5,4 +5,5 @@
     <color name="colorAccentLight">#ACDDD9</color>
     <color name="colorAccent">#38B09C</color>
     <color name="colorAccentDark">#2F8979</color>
+    <color name="darkDivider">#FAFAFA</color>
 </resources>

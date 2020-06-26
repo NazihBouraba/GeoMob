@@ -1,0 +1,1 @@
+https://en.wikipedia.org/w/api.php?action=query&titles=algeria&prop=extracts&format=json&exintro=1

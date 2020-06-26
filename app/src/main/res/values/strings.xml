@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">GeoMob</string>
+    <string name="example">example</string>
+    <string name="drapeau_image">drapeau Image</string>
+    <string name="m">M²</string>
+    <string name="ecouter_le_hymne_du_pays">ecouter le hymne du pays</string>
+    <string name="afficher_les_derniers_tweets">AFFICHER LES DERNIERS TWEETS</string>
+    <string name="voir_le_contenu_du_wikipedia">voir le contenu du WIKIPEDIA</string>
+    <string name="aller_voir_les_videos">Aller voir les videos</string>
+    <string name="population">population</string>
+    <string name="superficie">superficie</string>
+    <string name="textview">TextView</string>
+    <string name="principales_ressources">principales ressources</string>
+
+    <string name="description">Description</string>
+    <string name="wikipedia">Wikipedia</string>
+
+</resources>

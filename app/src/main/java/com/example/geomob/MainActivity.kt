@@ -1,14 +1,18 @@
 package com.example.geomob
 
 import android.annotation.SuppressLint
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
 import android.os.AsyncTask
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.geomob.model.Pays
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_pays_detail.*
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,18 +20,22 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        chagecolor(all_btn)
         get_pays()
 
+
         new_btn.setOnClickListener({
+            chagecolor(new_btn)
          New_pays()
         })
 
         visited_btn.setOnClickListener({
+            chagecolor(visited_btn)
             visited_pays()
         })
 
         all_btn.setOnClickListener({
-            get_pays()
+            chagecolor(all_btn)
            get_all()
         })
 
@@ -191,10 +199,23 @@ class MainActivity : AppCompatActivity() {
 
             false)
 
+        val Italy = Pays("Italy","Italy (Italian: Italia [iˈtaːlja] (About this soundlisten)), officially the Italian Republic (Italian: Repubblica Italiana [reˈpubblika itaˈljaːna]),[10][11][12][13] is a country consisting of a peninsula delimited by the Alps and surrounded by several islands. Italy is located in south-central Europe,[14][15] and it is also considered a part of western Europe.[16][17] A unitary parliamentary republic with its capital in Rome,",
+            "301,340" , "60,36 million", "The earliest known evidence of human presence in the area now known as England was that of Homo antecessor, dating to approximately 780,000 years ago. ","petrole gaze naturel...",
+            " Emmanuel Macron",
+            "https://images-na.ssl-images-amazon.com/images/I/216-f6h7qRL._AC_.jpg",
+            "italy_hymne",
+            ("https://www.fodors.com/wp-content/uploads/2019/03/20GorgeousSidetownsinItaly__HERO_shutterstock_688078159.jpg"+
+                    ",https://tr-images.condecdn.net/image/2736pore2VG/crop/1440/0.5235602094240838/f/2italy-gettyimages-908413712.jpg,https://media.gettyimages.com/photos/view-of-venices-grand-canal-picture-id911570904?s=612x612"
+                    ),
+            ("FlRwssZYRM0,TRGAzB858F8,b3VTeppIOmA"),
+
+            false)
+
 
          ajouter_pays(algeria)
          ajouter_pays(france)
          ajouter_pays(England)
+        ajouter_pays(Italy)
 
 
 
@@ -260,7 +281,7 @@ class MainActivity : AppCompatActivity() {
             override fun doInBackground(vararg voids: Void): Void? {
                 val db = PaysDB.getInstance(act)
                 val dao = db?.PaysDAO()
-                val pays = dao?.liste_pays()
+                list_pays=  dao?.liste_pays()
 
 
                 return null
@@ -271,6 +292,16 @@ class MainActivity : AppCompatActivity() {
                 recyclerView.swapAdapter(adapter,true)
             }
         }.execute()
+
+    }
+
+    fun chagecolor(b: Button){
+        var cd = ColorDrawable(-0x808080)
+        all_btn.background = cd
+        visited_btn.background = cd
+        new_btn.background = cd
+        cd =ColorDrawable(-0x0FFFF)
+        b.background = cd
 
     }
 }

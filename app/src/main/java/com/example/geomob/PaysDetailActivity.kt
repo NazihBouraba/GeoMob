@@ -30,7 +30,7 @@ class PaysDetailActivity : AppCompatActivity() {
         pays.visited= true
         visited_pays(pays)
         nom_pays.text= pays.nom
-        superficie_txt.text =pays.surface + "KM²"
+        superficie_txt.text =pays.surface + " KM²"
         population_txt.text = pays.population
         if (this != null) {
             Glide.with(this)

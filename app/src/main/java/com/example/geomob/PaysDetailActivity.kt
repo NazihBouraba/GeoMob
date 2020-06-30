@@ -26,7 +26,7 @@ class PaysDetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_pays_detail)
         val pays = intent.getSerializableExtra("pays") as Pays
         nom_pays.text= pays.nom
-        superficie_txt.text =pays.surface
+        superficie_txt.text =pays.surface + "KM²"
         population_txt.text = pays.population
         if (this != null) {
             Glide.with(this)
@@ -39,8 +39,8 @@ class PaysDetailActivity : AppCompatActivity() {
         val images: List<String> = pays.images.split(",")
         slider.setItems(images)
         slider.getIndicator()
-        // automatique animation
-        slider.addTimerToSlide(5000)
+
+
 
 
         hymne_btn.setOnClickListener({
@@ -75,6 +75,12 @@ class PaysDetailActivity : AppCompatActivity() {
             val intent = Intent(this,WikipediaActivity::class.java)
             intent.putExtra("pays",pays)
             startActivity(intent)
+        })
+        tweets_btn.setOnClickListener({
+            val intent = Intent(this,TwitterActivity::class.java)
+            intent.putExtra("pays",pays)
+            startActivity(intent)
+
         })
 
 

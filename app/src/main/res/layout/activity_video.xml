@@ -17,4 +17,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="la video suivante" />
+    <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/vid_index"
+        android:layout_margin="20dp"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_height="wrap_content"/>
 </LinearLayout>

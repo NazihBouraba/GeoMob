@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.activity_video.*
 
 class VideoActivity : YouTubeBaseActivity() , YouTubePlayer.OnInitializedListener {
 
-     var currentvideo = ""
+    var currentvideo = ""
     var taille =0
     lateinit var myoutubeplayer : YouTubePlayer
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,8 +20,9 @@ class VideoActivity : YouTubeBaseActivity() , YouTubePlayer.OnInitializedListene
         setContentView(R.layout.activity_video)
         val pays = intent.getSerializableExtra("pays") as Pays
         val videos: List<String> = pays.videos.split(",")
-         taille = videos.size
-         currentvideo = videos[0]
+        taille = videos.size
+        currentvideo = videos[0]
+        vid_index.text = "video 1 sur"+(videos.size).toString()
 
         playVideo(youtubePlayerView)
 
@@ -30,11 +31,13 @@ class VideoActivity : YouTubeBaseActivity() , YouTubePlayer.OnInitializedListene
             {
                 currentvideo = videos[videos.indexOf(currentvideo)+1]
                 myoutubeplayer.cueVideo(currentvideo)
+                vid_index.text = "video "+(videos.indexOf(currentvideo)+1).toString()+ "sur"+videos.size.toString()
 
             }
             else{
                 currentvideo= videos[0]
                 myoutubeplayer.cueVideo(currentvideo)
+                vid_index.text = "video "+(videos.indexOf(currentvideo)+1).toString()+ "sur"+videos.size.toString()
             }
 
         })

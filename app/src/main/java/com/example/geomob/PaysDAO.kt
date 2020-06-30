@@ -9,9 +9,12 @@ interface PaysDAO {
     @Query("SELECT * FROM Pays")
     fun liste_pays(): MutableList<Pays>
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun ajouter(pays : Pays)
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
     fun modifier(pays:  Pays)
+
+    @Delete
+    fun supprimer(pays:  Pays)
 }

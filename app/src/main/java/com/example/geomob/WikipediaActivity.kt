@@ -30,7 +30,7 @@ class WikipediaActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_wikipedia)
         val pays = intent.getSerializableExtra("pays") as Pays
-        get_wiki_article("Algeria")
+        get_wiki_article(pays.nom)
 
 
     }

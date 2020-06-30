@@ -18,6 +18,18 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         get_pays()
 
+        new_btn.setOnClickListener({
+         New_pays()
+        })
+
+        visited_btn.setOnClickListener({
+            visited_pays()
+        })
+
+        all_btn.setOnClickListener({
+            get_pays()
+           get_all()
+        })
 
 
 
@@ -185,6 +197,80 @@ class MainActivity : AppCompatActivity() {
          ajouter_pays(England)
 
 
+
+    }
+
+    fun New_pays() {
+        var act = this
+
+
+        object : AsyncTask<Void, Void, Void>() {
+            @SuppressLint("StaticFieldLeak")
+            override fun doInBackground(vararg voids: Void): Void? {
+                val db = PaysDB.getInstance(act)
+                val dao = db?.PaysDAO()
+                list_pays = dao?.new_pays(false)
+
+                return null
+            }
+
+
+            @SuppressLint("StaticFieldLeak")
+            override fun onPostExecute(result: Void?) {
+
+                val adapter =PaysRecyclerAdapter(act, list_pays!!)
+                recyclerView.swapAdapter(adapter,true)
+
+
+            }
+        }.execute()
+    }
+
+    fun visited_pays() {
+        var act = this
+
+
+        object : AsyncTask<Void, Void, Void>() {
+            @SuppressLint("StaticFieldLeak")
+            override fun doInBackground(vararg voids: Void): Void? {
+                val db = PaysDB.getInstance(act)
+                val dao = db?.PaysDAO()
+                list_pays = dao?.new_pays(true)
+
+                return null
+            }
+
+
+            @SuppressLint("StaticFieldLeak")
+            override fun onPostExecute(result: Void?) {
+
+                val adapter =PaysRecyclerAdapter(act, list_pays!!)
+                recyclerView.swapAdapter(adapter,true)
+
+
+            }
+        }.execute()
+    }
+
+    fun get_all()   {
+        var act = this
+
+
+        object : AsyncTask<Void, Void, Void>() {
+            override fun doInBackground(vararg voids: Void): Void? {
+                val db = PaysDB.getInstance(act)
+                val dao = db?.PaysDAO()
+                val pays = dao?.liste_pays()
+
+
+                return null
+            }
+
+            override fun onPostExecute(result: Void?) {
+                val adapter =PaysRecyclerAdapter(act, list_pays!!)
+                recyclerView.swapAdapter(adapter,true)
+            }
+        }.execute()
 
     }
 }

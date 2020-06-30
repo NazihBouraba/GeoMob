@@ -1,8 +1,10 @@
 package com.example.geomob
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.media.MediaPlayer
 import android.media.MediaPlayer.OnCompletionListener
+import android.os.AsyncTask
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
@@ -25,6 +27,8 @@ class PaysDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pays_detail)
         val pays = intent.getSerializableExtra("pays") as Pays
+        pays.visited= true
+        visited_pays(pays)
         nom_pays.text= pays.nom
         superficie_txt.text =pays.surface + "KM²"
         population_txt.text = pays.population
@@ -86,5 +90,27 @@ class PaysDetailActivity : AppCompatActivity() {
 
 
 
+    }
+
+    fun visited_pays(pays: Pays) {
+        var act = this
+
+
+        object : AsyncTask<Void, Void, Void>() {
+            @SuppressLint("StaticFieldLeak")
+            override fun doInBackground(vararg voids: Void): Void? {
+                val db = PaysDB.getInstance(act)
+                val dao = db?.PaysDAO()
+                 dao?.modifier(pays)
+
+                return null
+            }
+
+
+            @SuppressLint("StaticFieldLeak")
+            override fun onPostExecute(result: Void?) {
+
+            }
+        }.execute()
     }
 }
